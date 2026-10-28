@@ -1,0 +1,10 @@
+{
+  "name": "alzikrayat-MERN",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix client run dev"
+  },
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
