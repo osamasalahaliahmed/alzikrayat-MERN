@@ -83,16 +83,32 @@ export const login = async (req, res) => {
         message: "Invalid email or password",
       });
     }
+//on success generate session
 
-    return res.status(200).json({
-      message: "Credentials verified",
-      user: {
-        id: dbUser._id,
-        firstName: dbUser.firstName,
-        lastName: dbUser.lastName,
-        email: dbUser.email,
-      },
+    return req.session.regenerate((error) => {
+      if (error) {
+        return res.status(500).json({ message: "Could not create session" });
+      }
+
+      req.session.userId = dbUser._id.toString();
+
+      req.session.save((error) => {
+        if (error) {
+          return res.status(500).json({ message: "Could not save session" });
+        }
+
+        return res.status(200).json({
+          message: "Logged in successfully",
+          user: {
+            id: dbUser._id,
+            firstName: dbUser.firstName,
+            lastName: dbUser.lastName,
+            email: dbUser.email,
+          },
+        });
+      });
     });
+
   } catch (error) {
     console.error("Login failed:", error);
 
@@ -101,3 +117,22 @@ export const login = async (req, res) => {
     });
   }
 };
+
+export const logout = async (req, res) => {
+  try{
+
+    req.session.destroy((error) => {
+      if (error) {
+        return res.status(500).json("Error signing out")
+
+      }
+      res.clearCookie("connect.sid", { path: "/" });
+    return res.status(200).json("Signout successful")
+    })
+
+  }
+  catch(error){
+    return res.status(500).json("Error signing out")
+
+  }
+}

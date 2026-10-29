@@ -1,18 +1,37 @@
 import express from "express";
-import router from "./routes/authRoutes.js"
+import authRouter from "./routes/authRoutes.js"
+import photoRouter from "./routes/photoRoutes.js"
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-
-
-
+import session from "express-session";
+import MongoStore from "connect-mongo"
 dotenv.config();
-const app = express();
 
 
-
-app.use(express.json());
-app.use("/api/auth",router)
 const port = process.env.port;
+const mongoUrl=process.env.MONGODB_URI
+const sessionkey = process.env.SESSION_SECRET
+
+const app = express();
+app.use(express.json());
+app.use(session({
+  secret: sessionkey,
+  store: MongoStore.create({
+    mongoUrl: mongoUrl
+  }),
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    secure: false
+  }
+
+}))
+
+//Routes
+app.use("/api/auth", authRouter)
+app.use("/api/photos",photoRouter)
+
 
 const startServer = async () => {
   await connectDB();
@@ -26,9 +45,9 @@ const startServer = async () => {
 const connectDB = async () => {
   try {
 
-    const conn = await mongoose.connect(process.env.MONGODB_URI);
+    const conn = await mongoose.connect(mongoUrl);
     // await mongoose.connection.dropDatabase();
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    console.log("MongoDB Connected");
   } catch (error) {
     console.error(`Database connection error: ${error.message}`);
     process.exit(1);
