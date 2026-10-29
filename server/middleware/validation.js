@@ -42,7 +42,7 @@ const idParamsSchema = Joi.object({
 }).required();
 
 // Export a separate validation function for each purpose
-export const validateSignup = validate(signupSchema);
+export const validateRegister = validate(signupSchema);
 export const validateLogin = validate(loginSchema);
 export const validatePhoto = validate(photoSchema);
 export const validateComment = validate(commentSchema);
