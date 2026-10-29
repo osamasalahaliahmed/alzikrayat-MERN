@@ -2,6 +2,9 @@
 import dotenv from "dotenv";
 dotenv.config();
 
+//validation.js
+import { validateSignup } from "./middleware/validation.js";
+
 
 //mongoose
 import mongoose from "mongoose";
@@ -10,6 +13,7 @@ import mongoose from "mongoose";
 //express
 import express from "express";
 const app = express();
+app.use(express.json());
 const port = process.env.port;
 
 const startServer = async () => {
@@ -17,6 +21,14 @@ const startServer = async () => {
 
   app.get("/", (req, res) => {
     res.send("Hello World!");
+  });
+  app.post("/signup", (req, res) => {
+    const { error, value } = validateSignup(req.body)
+    if (error) {
+      res.status(400).send(error)
+    } else {
+      res.sendStatus(200)
+    }
   });
 
   app.listen(port, () => {
