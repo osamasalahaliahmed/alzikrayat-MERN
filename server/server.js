@@ -5,15 +5,17 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import session from "express-session";
 import MongoStore from "connect-mongo"
+import { errorHandler } from "./middleware/errorHandler.js";
 dotenv.config();
 
 
-const port = process.env.port;
+const PORT = process.env.port;
 const mongoUrl=process.env.MONGODB_URI
 const sessionkey = process.env.SESSION_SECRET
 
 const app = express();
 app.use(express.json());
+app.use("/uploads", express.static("uploads"));
 app.use(session({
   secret: sessionkey,
   store: MongoStore.create({
@@ -31,13 +33,14 @@ app.use(session({
 //Routes
 app.use("/api/auth", authRouter)
 app.use("/api/photos",photoRouter)
+app.use(errorHandler);
 
 
 const startServer = async () => {
   await connectDB();
 
-  app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+  app.listen(PORT, () => {
+    console.log(`Example app listening on port ${PORT}`);
   });
 };
 

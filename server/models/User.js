@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      minLenght: 3,
+      minLength: 3,
       required: true,
       select: false,
     },
