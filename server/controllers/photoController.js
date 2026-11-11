@@ -53,7 +53,7 @@ export const create = async (req, res) => {
       if (req.file) {
         await deleteFile(req.file.filename);
       }
-      return res.status(400).j  son({ message: error.details[0].message });
+      return res.status(400).json({ message: error.details[0].message });
     }
 
     if (!req.file) {
