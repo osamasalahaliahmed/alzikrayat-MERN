@@ -15,8 +15,48 @@ nav {
 
 .navLinks {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 20px;
+}
+
+.authPage {
+  max-width: 420px;
+  margin: auto;
+}
+
+.authPage h1 {
+  text-align: center;
+}
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.authForm input, .authForm textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 8px;
+  border: 1px solid #999;
+}
+
+.authForm textarea {
+  resize: vertical;
+}
+
+.switchForm {
+  display: block;
+  margin: 24px auto;
+}
+
+.navError {
+  text-align: center;
+}
+
+button:disabled {
+  cursor: wait;
 }
 
 main {
