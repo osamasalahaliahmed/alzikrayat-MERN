@@ -46,3 +46,80 @@ main {
   padding: 24px 0;
   text-align: center;
 }
+
+.galleryToolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.viewButtons {
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+button[aria-pressed="true"] {
+  font-weight: bold;
+  border: 2px solid #222;
+}
+
+.photoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 24px;
+}
+
+.photoCard {
+  min-width: 0;
+  border: 1px solid #ddd;
+  overflow-wrap: anywhere;
+}
+
+.photoCard img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.photoInfo {
+  padding: 16px;
+}
+
+.photoInfo h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.photoList {
+  display: grid;
+  gap: 16px;
+}
+
+.photoList .photoCard {
+  display: flex;
+}
+
+.photoList img {
+  width: 200px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .photoList .photoCard {
+    flex-direction: column;
+  }
+
+  .photoList img {
+    width: 100%;
+    height: 160px;
+  }
+}
