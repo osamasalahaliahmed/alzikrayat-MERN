@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import CommentList from "../components/CommentList.jsx";
+import CommentForm from "../components/CommentForm.jsx";
 
-function PhotoDetail() {
+function PhotoDetail({ user, setUser }) {
   const { id } = useParams();
   const [photo, setPhoto] = useState(null);
   const [comments, setComments] = useState([]);
@@ -65,6 +66,11 @@ function PhotoDetail() {
           <p>Uploaded by {photo.userId ? `${photo.userId.firstName} ${photo.userId.lastName}` : "Unknown user"}</p>
           <p>{new Date(photo.dateTime).toLocaleString()}</p>
           <CommentList comments={comments} />
+          {user ? (
+            <CommentForm key={photo._id} photoId={photo._id} setComments={setComments} setUser={setUser} />
+          ) : (
+            <p>Please <Link to="/login">log in</Link> to add a comment.</p>
+          )}
         </>
       )}
     </section>

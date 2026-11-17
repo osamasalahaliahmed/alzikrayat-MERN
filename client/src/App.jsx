@@ -19,7 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/photos" element={<Gallery />} />
           <Route path="/photos/new" element={<AddPhoto user={user} setUser={setUser} />} />
-          <Route path="/photos/:id" element={<PhotoDetail />} />
+          <Route path="/photos/:id" element={<PhotoDetail user={user} setUser={setUser} />} />
           <Route path="/login" element={<LoginRegister user={user} setUser={setUser} />} />
           <Route path="*" element={<p>Page not found. <Link to="/">Go home</Link></p>} />
         </Routes>

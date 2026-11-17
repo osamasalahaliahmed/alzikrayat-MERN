@@ -29,20 +29,20 @@ nav {
   text-align: center;
 }
 
-.authForm, .uploadForm {
+.authForm, .uploadForm, .commentForm {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.authForm input, .authForm textarea, .uploadForm input, .uploadForm textarea {
+.authForm input, .authForm textarea, .uploadForm input, .uploadForm textarea, .commentForm textarea {
   width: 100%;
   padding: 10px;
   margin-bottom: 8px;
   border: 1px solid #999;
 }
 
-.authForm textarea, .uploadForm textarea {
+.authForm textarea, .uploadForm textarea, .commentForm textarea {
   resize: vertical;
 }
 
@@ -195,4 +195,8 @@ button[aria-pressed="true"] {
 .comment {
   border-top: 1px solid #ddd;
   padding: 12px 0;
+}
+
+.commentForm {
+  margin-top: 24px;
 }
