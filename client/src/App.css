@@ -1,0 +1,48 @@
+header {
+  border-bottom: 1px solid #ddd;
+}
+
+nav {
+  max-width: 1000px;
+  margin: auto;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.navLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 24px 16px;
+}
+
+.banner {
+  padding: 64px 0;
+  text-align: center;
+}
+
+.banner h1 {
+  font-size: 36px;
+  line-height: 1.2;
+  margin: 0 0 16px;
+}
+
+.banner p {
+  margin: 0 0 24px;
+}
+
+.about {
+  max-width: 600px;
+  margin: auto;
+  padding: 24px 0;
+  text-align: center;
+}
