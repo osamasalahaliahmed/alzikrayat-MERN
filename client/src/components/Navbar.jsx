@@ -33,6 +33,7 @@ function Navbar({ user, setUser }) {
           <Link to="/photos">Gallery</Link>
           {user ? (
             <>
+              <Link to="/photos/new">Add Photo</Link>
               <span>Hi {user.firstName}</span>
               <button type="button" onClick={logout} disabled={loading}>
                 {loading ? "Logging out..." : "Logout"}

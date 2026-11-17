@@ -20,29 +20,29 @@ nav {
   gap: 20px;
 }
 
-.authPage {
+.authPage, .uploadPage {
   max-width: 420px;
   margin: auto;
 }
 
-.authPage h1 {
+.authPage h1, .uploadPage h1 {
   text-align: center;
 }
 
-.authForm {
+.authForm, .uploadForm {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.authForm input, .authForm textarea {
+.authForm input, .authForm textarea, .uploadForm input, .uploadForm textarea {
   width: 100%;
   padding: 10px;
   margin-bottom: 8px;
   border: 1px solid #999;
 }
 
-.authForm textarea {
+.authForm textarea, .uploadForm textarea {
   resize: vertical;
 }
 
