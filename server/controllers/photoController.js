@@ -32,6 +32,7 @@ export const getOne = async (req, res) => {
   }
   try {
     const foundPhoto = await Photo.findById(value.id)
+      .populate("userId", "firstName lastName");
     if (!foundPhoto) {
       return res.status(404).json("failed to find photo");
     }
