@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import CommentList from "../components/CommentList.jsx";
 import CommentForm from "../components/CommentForm.jsx";
+import DeletePhoto from "../components/DeletePhoto.jsx";
 
 function PhotoDetail({ user, setUser }) {
   const { id } = useParams();
@@ -65,6 +66,9 @@ function PhotoDetail({ user, setUser }) {
           {photo.description && <p className="photoDescription">{photo.description}</p>}
           <p>Uploaded by {photo.userId ? `${photo.userId.firstName} ${photo.userId.lastName}` : "Unknown user"}</p>
           <p>{new Date(photo.dateTime).toLocaleString()}</p>
+          {user && user.id === photo.userId?._id && (
+            <DeletePhoto key={photo._id} photoId={photo._id} setUser={setUser} />
+          )}
           <CommentList comments={comments} />
           {user ? (
             <CommentForm key={photo._id} photoId={photo._id} setComments={setComments} setUser={setUser} />

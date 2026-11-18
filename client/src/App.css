@@ -200,3 +200,13 @@ button[aria-pressed="true"] {
 .commentForm {
   margin-top: 24px;
 }
+
+.deletePhoto {
+  margin: 24px 0;
+}
+
+.deleteButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
